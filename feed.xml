@@ -1,176 +1,31 @@
+---
+layout: null
+nav_exclude: true
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tufte-Jekyll</title>
-    <description>A Jekyll theme for content-rich sites</description>
-    <link>/tufte-jekyll/</link>
-    <atom:link href="/tufte-jekyll/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 31 Dec 2021 15:34:53 -0500</pubDate>
-    <lastBuildDate>Fri, 31 Dec 2021 15:34:53 -0500</lastBuildDate>
-    <generator>Jekyll v4.2.1</generator>
-    
+    <title>{{ site.title | xml_escape }}</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    {% for post in site.posts limit:10 %}
       <item>
-        <title>Edge Cases</title>
-        <description>&lt;p&gt;Some edge cases and cautionary examples on using Markdown for writing content using this theme. In particular, list syntax can really knot things up.
-&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;mathjax-improperly-parsing-greater-and-less-than-and-ampersands-inside-blocks&quot;&gt;Mathjax improperly parsing greater and less than and ampersands inside blocks&lt;/h3&gt;
-
-&lt;p&gt;The mathjax HTML &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; scripts have been modified to properly render block style mathjax expressions inside a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$ ... $$&lt;/code&gt; set of character pairs,
-using the standard Kramdown parser. Some examples sent to me by Quxiaofeng are now parsing correctly, I believe.&lt;/p&gt;
-
-&lt;p&gt;This code:&lt;/p&gt;
-
-&lt;div class=&quot;language-latex highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
-  D &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\cdots&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;yields this:&lt;/p&gt;
-
-\[D = \left(\begin{matrix}
-  1 &amp;amp; -1 &amp;amp; &amp;amp; &amp;amp; &amp;amp; \\
-  &amp;amp;    &amp;amp; \cdots &amp;amp;   &amp;amp; \\
-  &amp;amp;    &amp;amp;        &amp;amp; 1 &amp;amp; -1
-\end{matrix}
-\right)\]
-
-&lt;p&gt;Other examples from the &lt;a href=&quot;http://latex.wikia.com/wiki/Matrix_environments&quot;&gt;wikia Tex reference&lt;/a&gt;:&lt;/p&gt;
-
-\[\begin{matrix}
-\alpha&amp;amp; \beta^{*}\\
-\gamma^{*}&amp;amp; \delta
-\end{matrix}\]
-
-\[\begin{bmatrix}
-\alpha&amp;amp; \beta^{*}\\
-\gamma^{*}&amp;amp; \delta
-\end{bmatrix}\]
-
-\[\begin{Bmatrix}
-\alpha&amp;amp; \beta^{*}\\
-\gamma^{*}&amp;amp; \delta
-\end{Bmatrix}\]
-
-\[\begin{vmatrix}
-\alpha&amp;amp; \beta^{*}\\
-\gamma^{*}&amp;amp; \delta
-\end{vmatrix}\]
-
-\[\begin{Vmatrix}
-\alpha&amp;amp; \beta^{*}\\
-\gamma^{*}&amp;amp; \delta
-\end{Vmatrix}\]
-
-\[\begin{Vmatrix}
-\alpha&amp;amp; \beta^{*}\\
-\gamma^{*}&amp;amp; \delta
-\end{Vmatrix}\]
-
-&lt;p&gt;However, a problem still exists for inline matrix notation, from an example &lt;a href=&quot;https://en.wikibooks.org/wiki/LaTeX/Mathematics#Matrices_in_running_text&quot;&gt;here&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;A matrix in text must be set smaller: \(\bigl(\begin{smallmatrix}a &amp;amp; b \\ c &amp;amp; d\end{smallmatrix} \bigr)\) to not increase leading in a portion of text. The way this inline matrix is written is: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$ \bigl(\begin{smallmatrix}a &amp;amp; b \\ c &amp;amp; d\end{smallmatrix} \bigr) $$&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;edge-case-1-from-quxiaofeng&quot;&gt;Edge Case 1 from Quxiaofeng:&lt;/h2&gt;
-
-&lt;h3 id=&quot;no-blank-lines-between-markdown-list-items&quot;&gt;No blank lines between Markdown list items&lt;/h3&gt;
-
-&lt;p&gt;The issue arises when sidenotes and marginnotes are put into list items.  As mentioned in the main documentation page, lists can be problematic not only for semantic clarity, but also because they can creating formatting issues. For example:&lt;/p&gt;
-
-&lt;h3 id=&quot;related-algorithms&quot;&gt;Related algorithms&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Split Bregman iteration &lt;label for=&quot;1&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;1&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Goldstein, T. and Osher, S. (2009). The split Bregman method for l1-regularized problems. SIAM J. Img. Sci., 2:323-343. &lt;/span&gt;&lt;/li&gt;
-  &lt;li&gt;Dykstra’s alternating projection algorithm &lt;label for=&quot;2&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Dykstra, R. L. (1983). An algorithm for restricted least squares regression. J. Amer. Statist. Assoc., 78(384):837-842. &lt;/span&gt;&lt;/li&gt;
-  &lt;li&gt;Proximal point algorithm applied to the dual&lt;/li&gt;
-  &lt;li&gt;Numerous applications in statistics and machine learning: lasso, gen. lasso, graphical lasso, (overlapping) group lasso, …&lt;/li&gt;
-  &lt;li&gt;Embraces distributed computing for big data &lt;label for=&quot;3&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;3&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Boyd, S., Parikh, N., Chu, E., Peleato, B., and Eckstein, J. (2011). Distributed optimization and statistical learning via the alternating direction method of multipliers. Found. Trends Mach. learn., 3(1):1-122. &lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;why-this-matters&quot;&gt;Why this matters&lt;/h3&gt;
-
-&lt;p&gt;Notice how the sidenotes display properly, but the fact that sidenotes have more display ‘volume’ than the list items themselves causes a horizontal mismatch between the sidenote item’s number and its corresponding list item.&lt;/p&gt;
-
-&lt;p&gt;Please note that there must be &lt;em&gt;no blank lines between your list items&lt;/em&gt;. This is due to a really strange thing about the Jekyll Markdown engine I have never noticed before. If you have a list, and you put a blank line between the items like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  + list item 1
-
-  + list item 2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It will create an html tag structure like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
-   &amp;lt;li&amp;gt;
-      &amp;lt;p&amp;gt;list item 1&amp;lt;/p&amp;gt;
-  &amp;lt;/li&amp;gt;
-  &amp;lt;li&amp;gt;
-      &amp;lt;p&amp;gt;list item 2&amp;lt;/p&amp;gt;
-   &amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Which &lt;em&gt;totally&lt;/em&gt; goofs up the layout CSS.&lt;/p&gt;
-
-&lt;p&gt;However, if your Markdown is this:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    + list item 1
-    + list item 2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It will create a tag structure like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
-   &amp;lt;li&amp;gt;list item 1&amp;lt;/li&amp;gt;
-   &amp;lt;li&amp;gt;list item 2&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here is the same content as above, with a blank line separating the list items. Notice how the sidenotes get squashed into the main content area:&lt;/p&gt;
-
-&lt;h3 id=&quot;remarks-on-admm-version-2---one-blank-line-between-markdown-list-items&quot;&gt;Remarks on ADMM version 2 - &lt;strong&gt;one blank line&lt;/strong&gt; between Markdown list items&lt;/h3&gt;
-
-&lt;p&gt;Related algorithms&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Split Bregman iteration &lt;label for=&quot;1&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;1&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Goldstein, T. and Osher, S. (2009). The split Bregman method for l1-regularized problems. SIAM J. Img. Sci., 2:323-343. &lt;/span&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Dykstra’s alternating projection algorithm &lt;label for=&quot;2&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Dykstra, R. L. (1983). An algorithm for restricted least squares regression. J. Amer. Statist. Assoc., 78(384):837-842. &lt;/span&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Proximal point algorithm applied to the dual&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Numerous applications in statistics and machine learning: lasso, gen. lasso, graphical lasso, (overlapping) group lasso, …
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;liquid-tag-parsing-strangeness&quot;&gt;Liquid tag parsing strangeness&lt;/h3&gt;
-
-&lt;p&gt;Example of the proper way to write an url inside a &lt;em&gt;Liquid&lt;/em&gt; full-width image tag.&lt;/p&gt;
-
-&lt;p&gt;This code: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% fullwidth &quot;assets/img/rhino.png&quot; &quot;Tuftes pet rhino (via &amp;lt;a href=\&quot;//www.edwardtufte.com/tufte/\&quot;&amp;gt;Edward Tufte&amp;lt;/a&amp;gt;)&quot;  %}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;produces the following image with a title. Notice that I have had to escape the double quotes in the HTML with a backslash. Also, the example above leaves out the single quote in ‘Tufte’s” because of the topsy-turvy way that you have to escape the escapes in code sections that are used for illustrative purposes in this text. Bottom line is that there are occasionally some odd interactions between the Markdown parser, custom &lt;em&gt;Liquid&lt;/em&gt; tags and HTML.&lt;/p&gt;
-&lt;figure class=&quot;fullwidth&quot;&gt;&lt;img src=&quot;/tufte-jekyll/assets/img/rhino.png&quot; /&gt;&lt;figcaption&gt;Tufte&amp;#8217;s pet rhino (via &lt;a href=&quot;//www.edwardtufte.com/tufte/&quot;&gt;Edward Tufte&lt;/a&gt;)&lt;/figcaption&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Mon, 13 Apr 2020 13:04:01 -0400</pubDate>
-        <link>/tufte-jekyll/articles/20/Edge-Cases</link>
-        <guid isPermaLink="true">/tufte-jekyll/articles/20/Edge-Cases</guid>
-        
-        
-        <category>post</category>
-        
+        <title>{{ post.title | xml_escape }}</title>
+        <description>{{ post.content | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
+        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
+        {% for tag in post.tags %}
+        <category>{{ tag | xml_escape }}</category>
+        {% endfor %}
+        {% for cat in post.categories %}
+        <category>{{ cat | xml_escape }}</category>
+        {% endfor %}
       </item>
-    
+    {% endfor %}
   </channel>
 </rss>
